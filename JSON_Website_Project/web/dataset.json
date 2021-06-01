@@ -1,0 +1,98 @@
+[
+    {
+        "id": 1,
+        "type": "dress",
+        "image": "images/dress1.jpg",
+        "name": "Taupe High Neck Midi Dress",
+        "price": "€28",
+        "size": ["XS", "S", "M", "L", "XL"]
+    },
+    {
+        "id": 2,
+        "type": "dress",
+        "image": "images/dress2.jpg",
+        "name": "White Long Sleeve Dress",
+        "price": "€25",
+        "size": ["XS", "S", "M", "L", "XL"]
+    },
+    {
+        "id": 3,
+        "type": "dress",
+        "image": "images/dress3.jpg",
+        "name": "Black Blazer Dress",
+        "price": "€29",
+        "size": ["XS", "S", "M", "L", "XL"]
+    },
+    {
+        "id": 4,
+        "type": "dress",
+        "image": "images/dress4.jpg",
+        "name": "Blue Bodycon Dress",
+        "price": "€18",
+        "size": ["XS", "S", "M", "L", "XL"]
+    },
+    {
+        "id": 5,
+        "type": "top",
+        "image":"images/top1.jpg",
+        "name": "Stone Ruched Bardot Shirt",
+        "price":"€25",
+        "size": ["XS", "S", "M", "L", "XL"]
+    },
+    {
+        "id": 6,
+        "type": "top",
+        "image":"images/top2.jpg",
+        "name":"Beige Jersey Long Sleeve Crop Top",
+        "price":"€20",
+        "size": ["XS", "S", "M", "L", "XL"]
+    },
+   {
+       "id": 7,
+        "type": "top",
+        "image":"images/top3.jpg",
+        "name":"Sage Satin Crop Top",
+        "price":"€23",
+        "size": ["XS", "S", "M", "L", "XL"]
+    },
+    {
+        "id": 8,
+        "type": "top",
+        "image":"images/top4.jpg",
+        "name":"White Racer Crop Top",
+        "price":"€10",
+        "size": ["XS", "S", "M", "L", "XL"]
+    },
+    {
+        "id": 9,
+        "type": "shoes",
+        "image": "images/shoes1.jpg",
+        "name": "Black Chain Detail Knee Boots",
+        "price": "€22",
+        "size": [3,4,5,6,7]
+    },
+    {
+        "id": 10,
+        "type": "shoes",
+        "image": "images/shoes2.jpg",
+        "name": "Tan Real Leather PU Sandals",
+        "price": "€11",
+        "size": [3,4,5,6,7]
+    },
+    {
+        "id": 11,
+        "type": "shoes",
+        "image": "images/shoes3.jpg",
+        "name": "Black Matte PU Ankle Boots",
+        "price": "€16",
+        "size": [3,4,5,6,7]
+    },    
+    {
+        "id": 12,
+        "type": "shoes",
+        "image": "images/shoes4.jpg",
+        "name": "Mink Faux Fur Strap Sliders",
+        "price": "€10",
+        "size": [3,4,5,6,7]
+    }
+]

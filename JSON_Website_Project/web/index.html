@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Clothing Palette - Online Clothing Store</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+        <style>
+            #container {
+                padding: 50px;
+            }
+        </style>
+    </head>
+    <body onload="ajaxListItems()">
+        <header id="header">
+            <div id="header-logo">
+                <img src="images/logo.png" alt="logo">
+                <h1>Clothing Palette</h1>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="navlist"><a class="current-menu" href="index.html">Home</a></li>
+                    <li class="navlist"><a href="about.html">About</a></li>
+                    <li class="navlist"><a href="tour.html">Tour</a></li>
+                    <li class="navlist"><a href="shop.html">Shop</a>
+                    <ul class="dropdown">
+                        <li class="droplist"><a href="tops.html">Tops</a></li>
+                        <li class="droplist"><a href="dress.html">Dresses</a></li>
+                        <li class="droplist"><a href="shoes.html">Shoes</a></li>
+                    </ul>
+                    </li>
+                    <li class="navlist"><a href="wishlist.html">Wishlist</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+
+            <div class="home-slideshow">
+                <button class="home-previous" onclick="nextSlide(-1)">&#8249;</button>
+                <button class="home-next" onclick="nextSlide(1)"> &#8250;</button>
+
+                <div class="home-slide fade">
+                    <img class="home-pic" src="images/home-pic1.jpg">
+                </div>
+                <div class="home-slide fade">
+                    <img class="home-pic" src="images/home-pic2.jpg">
+                </div>
+                <div class="home-slide fade">
+                    <img class="home-pic" src="images/home-pic3.jpg">
+                </div>
+                <div class="home-slide fade">
+                    <img class="home-pic" src="images/home-pic4.jpg">
+                </div>
+            </div>    
+
+            <div class="home-dots">
+                <span class="home-dot" onclick="currentSlide(1)"></span>
+                <span class="home-dot" onclick="currentSlide(2)"></span>
+                <span class="home-dot" onclick="currentSlide(3)"></span>
+                <span class="home-dot" onclick="currentSlide(4)"></span>
+            </div>
+
+            <h2 class="home-tagline">Wear better and look better<br>with Clothing Palette</h2>
+
+            <h2 class="shop-now" onclick="window.location = 'shop.html'">Shop now!</h2>
+            <div id="items"></div>
+        </main>
+        <script>
+            let slideIndex = 1
+
+            slideshow = n => {
+                let slide = document.getElementsByClassName("home-slide")
+                let dot = document.getElementsByClassName("home-dot")
+
+                if (n > slide.length)
+                {
+                    slideIndex = 1
+                }
+
+                if (n < 1)
+                {
+                    slideIndex = slide.length
+                }
+
+                for (let i = 0; i < slide.length; i++)
+                {
+                    slide[i].style.display = "none"
+                }
+
+                for (let i = 0; i < dot.length; i++)
+                {
+                    dot[i].className = dot[i].className.replace(" home-active", "")
+                }
+
+                slide[slideIndex - 1].style.display = "block"
+                dot[slideIndex - 1].className += " home-active"
+            }
+
+            nextSlide = n => {
+                slideshow(slideIndex += n)
+            }
+
+            currentSlide = n => {
+                slideshow(slideIndex = n)
+            }
+
+            slideshow(slideIndex)
+
+            async function ajaxListItems()
+            {
+                let url = `dataset.json`      /* name of the JSON file */
+
+                try
+                {
+                    const response = await fetch(url,
+                            {
+                                method: `POST`,
+                                headers: {'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                            })
+
+                    updateWebpage(await response.json())
+                } catch (error)
+                {
+                    console.log('Fetch failed: ', error)
+                }
+
+
+                /* use the fetched data to change the content of the webpage */
+                function updateWebpage(jsonData)
+                {
+                    itemJSON = JSON.parse(JSON.stringify(jsonData))
+
+                    const keys = Object.keys(jsonData)
+
+                    let randomKeys = []
+
+                    function shuffle(arr)
+                    {
+                        if (arr.length >= 3)
+                        {
+                            return
+                        }
+
+                        let newKey = Math.floor(Math.random() * keys.length)
+                        if (arr.indexOf(newKey) < 0)
+                        {
+                            arr.push(newKey)
+                        }
+                        shuffle(arr)
+
+                    }
+
+                    shuffle(randomKeys)
+
+                    let htmlString = `<div id="container">`
+
+                    for (let i = 0; i < randomKeys.length; i++)
+                    {
+                        let randomItems = itemJSON.filter(item => item.id === randomKeys[i] + 1)
+
+                        randomItems.map(item =>
+                        {
+                            htmlString += `<div class="itemsDisplay">
+                               <img src="${item.image}" onclick="window.location = '${item.id}.html'">
+                               <h2>${item.name}</h2>
+                               <p>${item.price}</p>
+                          </div>`
+                        })
+
+
+                    }
+
+                    htmlString += `</div>`
+                    document.getElementById('items').innerHTML = htmlString
+
+                }
+
+
+
+            }
+        </script>    
+    </body>
+</html>

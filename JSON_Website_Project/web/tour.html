@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Clothing Palette - Online Clothing Store</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header id="header">
+            <div id="header-logo">
+                <img src="images/logo.png" alt="logo">
+                <h1>Clothing Palette</h1>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="navlist"><a href="index.html">Home</a></li>
+                    <li class="navlist"><a href="about.html">About</a></li>
+                    <li class="navlist"><a class="current-menu" href="tour.html">Tour</a></li>
+                    <li class="navlist"><a href="shop.html">Shop</a>
+                    <ul class="dropdown">
+                        <li class="droplist"><a href="tops.html">Tops</a></li>
+                        <li class="droplist"><a href="dress.html">Dresses</a></li>
+                        <li class="droplist"><a href="shoes.html">Shoes</a></li>
+                    </ul>
+                    </li>
+                    <li class="navlist"><a href="wishlist.html">Wishlist</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="container">
+                <!-- Full-width images with number text -->
+                <div class="tourSlides">
+                    <div class="numbertext">1 / 5</div>
+                    <img src="images/shop1.jpg" alt="shopImage1" style="width:70%">
+                </div>
+
+                <div class="tourSlides">
+                    <div class="numbertext">2 / 5</div>
+                    <img src="images/shop2.jpg" alt="shopImage2" style="width:70%">
+                </div>
+
+                <div class="tourSlides">
+                    <div class="numbertext">3 / 5</div>
+                    <img src="images/shop3.jpg" alt="shopImage3" style="width:70%">
+                </div>
+
+                <div class="tourSlides">
+                    <div class="numbertext">4 / 5</div>
+                    <img src="images/shop4.jpg" alt="shopImage4" style="width:70%">
+                </div>
+
+                <div class="tourSlides">
+                    <div class="numbertext">5 / 5</div>
+                    <img src="images/shop5.jpg" alt="shopImage5" style="width:70%">
+                </div>
+
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                <!-- Image text -->
+                <div class="caption-container">
+                    <p id="caption"></p>
+                </div>
+
+                <!-- Thumbnail images -->
+                <div class="row">
+                    <div class="column">
+                        <img class="demo cursor" src="images/shop1.jpg" style="width:100%" onclick="currentSlide(1)" alt="Entrance into shop">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor" src="images/shop2.jpg" style="width:100%" onclick="currentSlide(2)" alt="Back of the shop">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor" src="images/shop3.jpg" style="width:100%" onclick="currentSlide(3)" alt="Dress area">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor" src="images/shop4.jpg" style="width:100%" onclick="currentSlide(4)" alt="Shoe area">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor" src="images/shop5.jpg" style="width:100%" onclick="currentSlide(5)" alt="Close up to the clothes">
+                    </div>
+                </div>
+            </div>  
+        </main>
+        <script>
+                var slideIndex = 1;
+                showSlides(slideIndex);
+
+// Next/previous controls
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
+
+// Thumbnail image controls
+                function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                }
+
+                function showSlides(n) {
+                    let i;
+                    let slides = document.getElementsByClassName("tourSlides");
+                    let dots = document.getElementsByClassName("demo");
+                    let captionText = document.getElementById("caption");
+                    if (n > slides.length) {
+                        slideIndex = 1
+                    }
+                    if (n < 1) {
+                        slideIndex = slides.length
+                    }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                    slides[slideIndex - 1].style.display = "block";
+                    dots[slideIndex - 1].className += " active";
+                    captionText.innerHTML = dots[slideIndex - 1].alt;
+                }
+            </script>
+    </body>
+</html>

@@ -1,0 +1,455 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --offwhite: #f7eee9;
+    --cream: #dac4b7;
+    --green: #a5a791;
+    --blush: #c8967f;
+    --brown: #73624e;
+    --playfair: 'Playfair Display', serif;
+    --sourcesans: 'Source Sans Pro', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    overflow-x: hidden;
+    font-family: var(--sourcesans)
+}
+
+h1, h2, h3 {
+    font-family: var(--playfair);
+}
+
+p {
+    font-family: var(--sourcesans)
+}
+
+/* Header */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--brown);
+    filter: drop-shadow(0 8px 10px lightgray);
+    z-index: 100;
+    width: 100%;
+    position: fixed;
+    
+}
+
+#header-logo {
+    padding-left: 20px;
+    color: white;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+
+#header-logo img {
+    height: 100px;
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: 0.3}
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: 0.3} 
+    to {opacity: 1}
+}
+
+
+/* Nav */
+
+.menu ul {
+    display: flex;
+}
+
+.current-menu {
+    color: white;
+    text-decoration: underline !important;
+}
+
+.menu a {
+    text-transform:  uppercase;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    font-family: var(--sourcesans);
+}
+
+.menu li {
+    position: relative;
+    list-style: none;
+    text-decoration: none;
+    width: 90px;
+    margin-right: 50px;
+}
+
+
+.navlist a:hover {
+    color: white;
+    text-decoration: underline;
+    -webkit-transition: 0.2s;
+    transition: 0.2s ;
+}
+
+.menu li:hover .dropdown > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 0px;  
+    width: 130px;
+    z-index: 2;
+}
+
+.droplist a:hover {
+    font-weight: bold;
+    color: var(--brown);
+    border-bottom: none;
+}
+
+.droplist a {
+    position: relative;
+    color: black;
+    text-align: center;
+    padding: 20px !important;
+}
+
+.droplist {
+    display: none;
+}
+
+
+.dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column; 
+}
+
+/* Home */
+
+.home-slideshow {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    padding-top: 120px;
+    display: flex;
+    align-items: center;
+}
+
+.home-slide {
+    position: relative;
+    display: none;
+}
+
+.home-pic {
+    margin: 50px auto;
+    margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.home-dot {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: var(--blush);
+    position: relative;
+    margin: 4px;
+}
+
+.home-previous, .home-next {
+    z-index: 5;
+    border-radius: 50%;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    font-size: 1.5em;
+    color: var(--brown);
+    border: none;
+    cursor: pointer;
+}
+
+.home-previous:focus, .home-next:focus {
+    outline: none;
+}
+
+.home-previous {
+    left: 10px;
+}
+
+.home-next {
+    right: 10px;
+}
+
+.home-active {
+    background-color: var(--brown);
+}
+
+.home-dots {
+    text-align: center;
+}
+
+.home-tagline {
+    color: var(--brown);
+    text-align: center;
+    font-size: 3em;
+    padding-top: 50px;
+    margin: 30px;
+}
+
+.shop-now {
+    color: var(--blush);
+    text-align: center;
+    cursor: pointer;
+    font-size:  3em;
+    padding-top: 60px;
+}
+
+.shop-now:hover {
+    color: var(--brown);
+    text-decoration: underline;
+}
+
+/* Shop */
+
+#container
+{
+    display: flex;
+    column-gap: 50px;
+    padding: 80px 30px;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    justify-content: center;
+}
+
+.itemsDisplay 
+{
+    width: 250px;
+    background-color: var(--offwhite);
+    text-align: center;
+    padding: 15px;
+    padding-bottom: 40px;
+    flex-direction: column;
+}
+
+
+.itemsDisplay h2 {
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.itemsDisplay p {
+    font-size: 1.5em;
+    margin: 10px;
+}
+
+.itemsDisplay img 
+{
+    width: 250px;
+}
+
+#addWishlistHeart 
+{
+    width: 20px;
+    cursor: pointer;
+    position: absolute;
+    margin-left: -7px;
+    
+}
+
+#removeWishlistHeart 
+{
+    width: 20px;
+    cursor: pointer;
+    position: absolute;
+    margin-left: -7px;
+
+}
+
+
+.shop-title {
+    padding-top: 170px;
+    color: var(--brown);
+    text-align: center;
+    font-size: 3.5em;
+}
+
+#searchImg {
+    width: 10px;
+}
+
+/* Single Item Display */
+
+
+.singleItem {
+    display: flex;
+    margin-top: 100px;
+    padding: 30px;
+    background-color: var(--offwhite);
+    width: 70%;
+    align-items: center;
+}
+
+.singleItemImg {
+    width: 85%
+}
+
+.singleItemDesc {
+    padding: 30px;
+    font-size: 2em;
+}
+
+input[type="radio"] {
+    margin: 10px;
+    display: inline-block;
+}
+
+/* shakiras tour page */
+
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  font-family: var(--sourcesans); 
+  text-align: center;
+}
+
+/* Hide the images by default */
+.tourSlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 30px;
+  padding-left: 100px;
+  margin-top: -50px;
+  color: var(--blush);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  top:330px;
+  right:50px;
+}
+.prev{
+    left:0;
+    border-radius: 0px 3 0 3px;
+}
+
+
+.prev:hover,
+.next:hover {
+  background-color: var(--blush);
+  color: var(--offwhite);
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: var(--brown);
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 20%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+/*Charlotte about page*/
+.about1{
+    margin-top: 160px;
+}
+
+.about1 h1{
+    text-align: center;
+    color: var(--brown);
+    font-family: var(--playfair);
+    font-size: 60px;
+}
+
+.about1 h2{
+    margin: 30px;
+    text-align: justify;
+    color: var(--brown);
+    font-family: var(--sourcesans);
+    font-size: 20px;
+}
+
+.aboutph{
+    display: flex;    
+    flex-direction: row;
+}
+
+.aboutph img{    
+    margin-left: 40px;
+    padding: 50px;
+}
+
+.about2 h2{
+    margin-left: 30px;
+    text-align: justify;
+    color: var(--brown);
+    font-family: var(--sourcesans);
+    font-size: 20px;
+}
